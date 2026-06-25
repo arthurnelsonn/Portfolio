@@ -29,7 +29,7 @@ import ec15 from "../assets/ec15.jpg";
 import ec16 from "../assets/ec16.jpg";
 import ec17 from "../assets/ec17.jpg";
 import ec18 from "../assets/ec18.jpg";
-import ecocareLogo from "../assets/ecocare_Logo.png";
+import ecocareLogo from "../assets/ecocare_logo.png";
 
 
 export const PROJECTS = [
