@@ -115,7 +115,7 @@ export default function Hero() {
             ))}
 
             <a
-              href="/resume.pdf"
+              href=""
               className="ml-2 px-6 py-3 rounded-xl bg-indigo-600 text-white text-base font-semibold hover:bg-indigo-700 transition-colors shadow-sm"
             >
               Resume ↗
