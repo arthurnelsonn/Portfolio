@@ -1,0 +1,237 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ImageIcon, X, ChevronLeft, ChevronRight, GitFork, ExternalLink } from "lucide-react";
+import { PROJECTS } from "../data/projects";
+
+/* ── Outline/line logo variants where available, plain fallback ── */
+const TECH_LOGOS = {
+  "React":        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "Node.js":      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg",
+  "PostgreSQL":   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg",
+  "Python":       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-plain.svg",
+  "TensorFlow":   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+  "Pandas":       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original-wordmark.svg",
+  "Next.js":      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-plain.svg",
+  "Tailwind CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+  "Supabase":     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-plain.svg",
+  "JavaScript":   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg",
+  "TypeScript":   "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg",
+  "HTML":         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg",
+  "CSS":          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg",
+  "Java":         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-plain.svg",
+  "MySQL":        "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
+  "Laravel":      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg",
+  "MongoDB":      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-plain.svg",
+  "Docker":       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg",
+  "Git":          "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-plain.svg",
+};
+
+const cardVariants = {
+  hidden:  { opacity: 0, y: 32 },
+  visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.45, ease: "easeOut" } }),
+};
+
+/* ── Image Carousel ── */
+function ImageCarousel({ images, title, height = "h-48", contain = false }) {
+  const [idx, setIdx] = useState(0);
+  const hasImages = images?.length > 0;
+  const multi = images?.length > 1;
+
+  const prev = (e) => { e.stopPropagation(); setIdx((i) => (i - 1 + images.length) % images.length); };
+  const next = (e) => { e.stopPropagation(); setIdx((i) => (i + 1) % images.length); };
+
+  return (
+    <div className={`relative ${height} bg-black flex items-center justify-center overflow-hidden`}>
+      {hasImages ? (
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={idx}
+            src={images[idx]}
+            alt={`${title} ${idx + 1}`}
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -30 }}
+            transition={{ duration: 0.25 }}
+            className={`w-full h-full absolute inset-0 ${contain ? "object-contain" : "object-cover"}`}
+          />
+        </AnimatePresence>
+      ) : (
+        <ImageIcon className="w-12 h-12 text-indigo-200" strokeWidth={1.5} />
+      )}
+
+      {multi && (
+        <>
+          <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center transition-colors z-10">
+            <ChevronLeft className="w-4 h-4 text-gray-700" />
+          </button>
+          <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center transition-colors z-10">
+            <ChevronRight className="w-4 h-4 text-gray-700" />
+          </button>
+          <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+            {images.map((_, i) => (
+              <button key={i} onClick={(e) => { e.stopPropagation(); setIdx(i); }}
+                className={`w-1.5 h-1.5 rounded-full transition-colors ${i === idx ? "bg-indigo-500" : "bg-white/60"}`}
+              />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+export default function Projects() {
+  const [selected, setSelected] = useState(null);
+
+  return (
+    <section id="projects" className="bg-gray-50 border-y border-gray-100">
+      <div className="max-w-7xl mx-auto px-8 py-20 sm:py-24">
+
+        <div className="mb-14">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-indigo-400">Portfolio</span>
+          <h2 className="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
+            Projects
+            <span className="block w-12 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-3" />
+          </h2>
+          <p className="mt-3 text-lg text-gray-500">Here are the projects that I have built.</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PROJECTS.map((project, i) => (
+            <motion.div
+              key={project.title}
+              custom={i}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={cardVariants}
+            >
+              <ProjectCard project={project} onClick={() => setSelected(project)} />
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}
+      </AnimatePresence>
+    </section>
+  );
+}
+
+function ProjectCard({ project, onClick }) {
+  return (
+    <div
+      onClick={onClick}
+      className="group h-full flex flex-col rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden cursor-pointer"
+    >
+      {/* Thumbnail with carousel */}
+      <div className="relative">
+        <ImageCarousel images={project.thumbnail ? [project.thumbnail] : project.images} title={project.title} height="h-48" />
+        <div className="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/50 transition-colors duration-300 flex items-center justify-center pointer-events-none">
+          <span className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 text-white text-sm font-semibold border border-white/50 rounded-full px-5 py-2">
+            View Details
+          </span>
+        </div>
+      </div>
+
+      {/* Body */}
+      <div className="flex flex-col flex-1 p-6">
+        <h3 className="font-extrabold text-gray-900 text-xl leading-snug tracking-tight">{project.title}</h3>
+        <p className="mt-2 text-sm text-gray-500 leading-relaxed flex-1">{project.description}</p>
+
+        {/* Outline tech logos only on card */}
+        <div className="mt-4 flex flex-wrap gap-3">
+          {project.tech.map((t) =>
+            TECH_LOGOS[t] ? (
+              <img
+                key={t} src={TECH_LOGOS[t]} alt={t} title={t}
+                className="w-6 h-6 object-contain opacity-60 hover:opacity-100 transition-opacity"
+                style={{ filter: "grayscale(100%) contrast(0.6) sepia(100%) hue-rotate(200deg) saturate(300%)" }}
+              />
+            ) : (
+              <span key={t} className="text-xs font-medium text-gray-400 border border-gray-200 rounded-full px-2.5 py-1">{t}</span>
+            )
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProjectModal({ project, onClose }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/50 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        transition={{ duration: 0.25, ease: "easeOut" }}
+        onClick={(e) => e.stopPropagation()}
+        className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto"
+      >
+        {/* Image carousel — taller in modal */}
+        <div className="relative">
+          <ImageCarousel images={project.images} title={project.title} height="h-[500px]" contain />
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 w-9 h-9 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm z-20"
+          >
+            <X className="w-4 h-4 text-gray-600" />
+          </button>
+        </div>
+
+        {/* Content */}
+        <div className="p-10">
+          <h2 className="text-3xl font-bold text-gray-900 tracking-tight">{project.title}</h2>
+          <p className="mt-4 text-gray-500 text-base leading-relaxed">{project.fullDescription}</p>
+
+          {/* Tech stack — outline logos + names */}
+          <div className="mt-8">
+            <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-4">Tech Stack</h4>
+            <div className="flex flex-wrap gap-3">
+              {project.tech.map((t) => (
+                <div key={t} className="flex items-center gap-2.5 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5">
+                  {TECH_LOGOS[t] && (
+                    <img
+                      src={TECH_LOGOS[t]} alt={t}
+                      className="w-5 h-5 object-contain"
+                      style={{ filter: "grayscale(100%) contrast(0.7) sepia(100%) hue-rotate(200deg) saturate(300%)" }}
+                    />
+                  )}
+                  <span className="text-sm font-medium text-gray-700">{t}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Links */}
+          <div className="mt-10 flex items-center gap-3">
+            {project.repo && (
+              <a
+                href={project.repo} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 rounded-xl border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition-colors"
+              >
+                <GitFork className="w-4 h-4" /> GitHub Repo
+              </a>
+            )}
+            {project.link && project.link !== "#" && (
+              <a
+                href={project.link} target="_blank" rel="noopener noreferrer"
+                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 transition-colors"
+              >
+                <ExternalLink className="w-4 h-4" /> Live Demo
+              </a>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
