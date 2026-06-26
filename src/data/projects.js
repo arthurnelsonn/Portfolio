@@ -55,8 +55,8 @@ export const PROJECTS = [
   },
   {
     title: "EcoCare",
-    description: "A short summary of what this project does and the problem it solves.",
-    fullDescription: "A more detailed description of this project. Explain the problem it solves, the approach you took, the challenges you faced, and what you learned from building it.",
+    description: "EcoCare is a web platform that centralizes community waste management, allowing users to report local waste issues, sell recyclables, and access educational resources",
+    fullDescription: "EcoCare tackles the need for an integrated approach to community waste management by bridging the logistical gap between the public and waste operators. Operating within a collaborative engineering team, I leaned into my system analysis skills to architect a clear, role-based workflow divided between Users, Admins, and Officers. This separation ensures that the processes for public reporting, administrative verification, and field operations remain highly controlled and effective. To build this scalable web solution, we utilized a modern tech stack featuring React, Vite, and Tailwind for the frontend, powered by a Laravel 12 backend.",
     tech: ["React", "Vite", "Laravel", "Tailwind CSS"],
     thumbnail: ecocareLogo,
     images: [ec1, ec2, ec3, ec4, ec5, ec6, ec7, ec8, ec9, ec10, ec11, ec12, ec13, ec14, ec15, ec16, ec17, ec18],
