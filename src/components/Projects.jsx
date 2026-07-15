@@ -56,7 +56,7 @@ function ImageCarousel({ images, title, height = "h-48", contain = false }) {
           />
         </AnimatePresence>
       ) : (
-        <ImageIcon className="w-12 h-12 text-indigo-200" strokeWidth={1.5} />
+        <ImageIcon className="w-12 h-12 text-gray-300" strokeWidth={1.5} />
       )}
 
       {multi && (
@@ -70,7 +70,7 @@ function ImageCarousel({ images, title, height = "h-48", contain = false }) {
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
             {images.map((_, i) => (
               <button key={i} onClick={(e) => { e.stopPropagation(); setIdx(i); }}
-                className={`w-1.5 h-1.5 rounded-full transition-colors ${i === idx ? "bg-indigo-500" : "bg-white/60"}`}
+                className={`w-1.5 h-1.5 rounded-full transition-colors ${i === idx ? "bg-white" : "bg-white/40"}`}
               />
             ))}
           </div>
@@ -88,10 +88,10 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto px-8 py-20 sm:py-24">
 
         <div className="mb-14">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-indigo-400">Portfolio</span>
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400">Portfolio</span>
           <h2 className="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
             Projects
-            <span className="block w-12 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-3" />
+            <span className="block w-12 h-1 bg-gray-900 rounded-full mt-3" />
           </h2>
           <p className="mt-3 text-lg text-gray-500">Here are the projects that I have built.</p>
         </div>
@@ -128,7 +128,7 @@ function ProjectCard({ project, onClick }) {
       {/* Thumbnail with carousel */}
       <div className="relative">
         <ImageCarousel images={project.thumbnail ? [project.thumbnail] : project.images} title={project.title} height="h-48" />
-        <div className="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/50 transition-colors duration-300 flex items-center justify-center pointer-events-none">
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center pointer-events-none">
           <span className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 text-white text-sm font-semibold border border-white/50 rounded-full px-5 py-2">
             View Details
           </span>
@@ -147,7 +147,7 @@ function ProjectCard({ project, onClick }) {
               <img
                 key={t} src={TECH_LOGOS[t]} alt={t} title={t}
                 className="w-6 h-6 object-contain opacity-60 hover:opacity-100 transition-opacity"
-                style={{ filter: "grayscale(100%) contrast(0.6) sepia(100%) hue-rotate(200deg) saturate(300%)" }}
+                style={{ filter: "grayscale(100%) contrast(0.8)" }}
               />
             ) : (
               <span key={t} className="text-xs font-medium text-gray-400 border border-gray-200 rounded-full px-2.5 py-1">{t}</span>
@@ -202,7 +202,7 @@ function ProjectModal({ project, onClose }) {
                     <img
                       src={TECH_LOGOS[t]} alt={t}
                       className="w-5 h-5 object-contain"
-                      style={{ filter: "grayscale(100%) contrast(0.7) sepia(100%) hue-rotate(200deg) saturate(300%)" }}
+                      style={{ filter: "grayscale(100%) contrast(0.8)" }}
                     />
                   )}
                   <span className="text-sm font-medium text-gray-700">{t}</span>
@@ -224,7 +224,7 @@ function ProjectModal({ project, onClose }) {
             {project.link && project.link !== "#" && (
               <a
                 href={project.link} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 text-white text-sm font-semibold hover:bg-indigo-700 transition-colors"
+                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-900 text-white text-sm font-semibold hover:bg-gray-700 transition-colors"
               >
                 <ExternalLink className="w-4 h-4" /> Live Demo
               </a>

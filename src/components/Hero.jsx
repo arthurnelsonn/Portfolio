@@ -25,12 +25,12 @@ function Typewriter({ words }) {
   }, [displayed, deleting, wordIndex, words]);
 
   return (
-    <span className="text-indigo-600">
+    <span className="text-gray-900">
       {displayed}
       <motion.span
         animate={{ opacity: [1, 0] }}
         transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-        className="inline-block w-0.5 h-[1em] bg-indigo-500 ml-1 align-middle"
+        className="inline-block w-0.5 h-[1em] bg-gray-900 ml-1 align-middle"
       />
     </span>
   );
@@ -82,7 +82,7 @@ export default function Hero() {
 
         {/* Text */}
         <div className="flex-1 text-center md:text-left">
-          <motion.p {...fadeUp(0)} className="text-indigo-600 text-base font-semibold uppercase tracking-widest mb-4">
+          <motion.p {...fadeUp(0)} className="text-gray-400 text-base font-semibold uppercase tracking-widest mb-4">
             Hello, I'm Arthur Nelson
           </motion.p>
 
@@ -108,7 +108,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="w-12 h-12 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:text-indigo-600 hover:border-indigo-200 hover:bg-indigo-50 transition-colors"
+                className="w-12 h-12 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-400 hover:bg-gray-100 transition-colors"
               >
                 <Icon className="w-5 h-5" strokeWidth={1.75} />
               </a>
@@ -116,7 +116,7 @@ export default function Hero() {
 
             <a
               href=""
-              className="ml-2 px-6 py-3 rounded-xl bg-indigo-600 text-white text-base font-semibold hover:bg-indigo-700 transition-colors shadow-sm"
+              className="ml-2 px-6 py-3 rounded-xl bg-gray-900 text-white text-base font-semibold hover:bg-gray-700 transition-colors shadow-sm"
             >
               Resume ↗
             </a>
@@ -133,7 +133,7 @@ export default function Hero() {
           <img 
             src="/profile.jpeg" 
             alt="Arthur Nelson"
-            className="w-64 h-64 sm:w-80 sm:h-80 rounded-2xl border border-indigo-100 shadow-md object-cover"
+            className="w-64 h-64 sm:w-80 sm:h-80 rounded-2xl border border-gray-200 shadow-md object-cover"
           />
 
         </motion.div>

@@ -12,10 +12,10 @@ export default function Skills() {
       <div className="max-w-7xl mx-auto px-8 py-20 sm:py-24">
 
         <div className="mb-14">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-indigo-400">Expertise</span>
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400">Expertise</span>
           <h2 className="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
             Skills
-            <span className="block w-12 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full mt-3" />
+            <span className="block w-12 h-1 bg-gray-900 rounded-full mt-3" />
           </h2>
           <p className="mt-3 text-lg text-gray-500">What I bring to a team.</p>
         </div>
@@ -32,8 +32,8 @@ export default function Skills() {
               className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8"
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center">
-                  <Icon className="w-6 h-6 text-indigo-600" strokeWidth={1.75} />
+                <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
+                  <Icon className="w-6 h-6 text-gray-700" strokeWidth={1.75} />
                 </div>
                 <h3 className="font-semibold text-gray-900 text-base">{category}</h3>
               </div>
@@ -41,7 +41,7 @@ export default function Skills() {
               <ul className="space-y-3">
                 {items.map((item) => (
                   <li key={item} className="flex items-center gap-3 text-base text-gray-500">
-                    <span className="w-2 h-2 rounded-full bg-indigo-400 flex-shrink-0" />
+                    <span className="w-2 h-2 rounded-full bg-gray-400 flex-shrink-0" />
                     {item}
                   </li>
                 ))}
