@@ -54,7 +54,7 @@ export default function Education() {
                 <div className="absolute left-0 top-0 bottom-0 w-1 bg-white" />
 
                 <div className="flex items-center gap-6 px-8 pt-8 pb-6 border-b border-gray-700">
-                  <div className="w-32 h-32 border border-gray-700 group-hover:border-gray-400 transition-colors flex items-center justify-center p-2 flex-shrink-0 bg-gray-900">
+                  <div className="w-32 h-32 border border-gray-700 group-hover:border-gray-400 transition-colors flex items-center justify-center p-2 flex-shrink-0 bg-white">
                     <img src={edu.logo} alt={edu.school} className="w-full h-full object-contain" />
                   </div>
                   <div>
