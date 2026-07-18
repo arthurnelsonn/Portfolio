@@ -11,9 +11,7 @@ export default function Skills() {
     <section id="skills" className="bg-gray-950">
       <div className="max-w-7xl mx-auto px-8 py-20 sm:py-24">
 
-        <p className="text-[8rem] font-black text-gray-800 leading-none select-none -mb-10 -ml-2">04</p>
-
-        <div className="mb-14 border-l-4 border-white pl-8">
+<div className="mb-14 border-l-4 border-white pl-8">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-500">Expertise</span>
           <h2 className="mt-2 text-4xl sm:text-5xl font-black text-white tracking-tight">Skills</h2>
           <p className="mt-3 text-lg text-gray-400">What I bring to a team.</p>

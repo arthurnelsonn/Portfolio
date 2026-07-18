@@ -77,15 +77,6 @@ export default function Hero() {
     <section id="hero" className="max-w-7xl mx-auto px-8 py-20 sm:py-28">
 
       {/* Section number */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        className="text-[10rem] font-black text-gray-100 leading-none select-none -mb-16 -ml-2"
-      >
-        01
-      </motion.p>
-
       <div className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16">
 
         {/* Text */}
@@ -123,7 +114,8 @@ export default function Hero() {
             ))}
 
             <a
-              href=""
+              href="/CV_Arthur Nelson Kings Pranoto.pdf"
+              download
               className="ml-1 px-6 py-3 bg-gray-900 text-white text-sm font-bold uppercase tracking-widest hover:bg-black transition-colors"
             >
               Resume ↗

@@ -6,9 +6,7 @@ export default function Education() {
   return (
     <section id="education" className="max-w-7xl mx-auto px-8 py-20 sm:py-24">
 
-      <p className="text-[8rem] font-black text-gray-100 leading-none select-none -mb-10 -ml-2">03</p>
-
-      <div className="mb-14 border-l-4 border-gray-900 pl-8">
+<div className="mb-14 border-l-4 border-gray-900 pl-8">
         <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Background</span>
         <h2 className="mt-2 text-4xl sm:text-5xl font-black text-gray-900 tracking-tight">Education</h2>
         <p className="mt-3 text-gray-500">My academic background.</p>
