@@ -37,7 +37,7 @@ export default function Portfolio() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 font-sans antialiased">
+    <div className="min-h-screen bg-white text-gray-900 font-sans antialiased selection:bg-gray-900 selection:text-white">
       <Nav activeSection={activeSection} onNavigate={scrollToSection} />
       <Hero />
       <Projects />

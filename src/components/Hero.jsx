@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-import { Mail, User } from "lucide-react";
+import { Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 
-/* ── Typewriter ── */
 function Typewriter({ words }) {
   const [wordIndex, setWordIndex] = useState(0);
   const [displayed, setDisplayed] = useState("");
@@ -36,7 +35,6 @@ function Typewriter({ words }) {
   );
 }
 
-/* ── Social Icons ── */
 function InstagramIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
@@ -62,10 +60,10 @@ function LinkedInIcon() {
 }
 
 const SOCIALS = [
-  { href: "https://www.linkedin.com/in/arthur-nelson-kings-pranoto-041765274/",  icon: LinkedInIcon,  label: "LinkedIn"  },
-  { href: "https://github.com/arthurnelsonn",                                    icon: GitHubIcon,    label: "GitHub"    },
-  { href: "https://www.instagram.com/arthurrnelson/",                            icon: InstagramIcon, label: "Instagram" },
-  { href: "mailto:arthurnkp1805@gmail.com",                                      icon: Mail,          label: "Email"     },
+  { href: "https://www.linkedin.com/in/arthur-nelson-kings-pranoto-041765274/", icon: LinkedInIcon, label: "LinkedIn" },
+  { href: "https://github.com/arthurnelsonn",                                   icon: GitHubIcon,   label: "GitHub"   },
+  { href: "https://www.instagram.com/arthurrnelson/",                           icon: InstagramIcon,label: "Instagram"},
+  { href: "mailto:arthurnkp1805@gmail.com",                                     icon: Mail,         label: "Email"    },
 ];
 
 const fadeUp = (delay = 0) => ({
@@ -78,15 +76,25 @@ export default function Hero() {
   return (
     <section id="hero" className="max-w-7xl mx-auto px-8 py-20 sm:py-28">
 
+      {/* Section number */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        className="text-[10rem] font-black text-gray-100 leading-none select-none -mb-16 -ml-2"
+      >
+        01
+      </motion.p>
+
       <div className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-16">
 
         {/* Text */}
-        <div className="flex-1 text-center md:text-left">
-          <motion.p {...fadeUp(0)} className="text-gray-400 text-base font-semibold uppercase tracking-widest mb-4">
+        <div className="flex-1 text-center md:text-left border-l-4 border-gray-900 pl-8">
+          <motion.p {...fadeUp(0)} className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">
             Hello, I'm Arthur Nelson
           </motion.p>
 
-          <motion.h1 {...fadeUp(0.1)} className="text-5xl sm:text-6xl font-bold text-gray-900 leading-tight tracking-tight">
+          <motion.h1 {...fadeUp(0.1)} className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight tracking-tight">
             I am into{" "}
             <Typewriter words={["Software Engineering", "Building Websites", "Problem Solving", "Design"]} />
           </motion.h1>
@@ -100,7 +108,7 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          <motion.div {...fadeUp(0.3)} className="mt-10 flex items-center justify-center md:justify-start gap-4">
+          <motion.div {...fadeUp(0.3)} className="mt-10 flex items-center justify-center md:justify-start gap-3 flex-wrap">
             {SOCIALS.map(({ href, icon: Icon, label }) => (
               <a
                 key={label}
@@ -108,7 +116,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="w-12 h-12 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-400 hover:bg-gray-100 transition-colors"
+                className="w-11 h-11 flex items-center justify-center border-2 border-gray-200 text-gray-500 hover:border-gray-900 hover:text-gray-900 hover:bg-gray-50 transition-all"
               >
                 <Icon className="w-5 h-5" strokeWidth={1.75} />
               </a>
@@ -116,26 +124,27 @@ export default function Hero() {
 
             <a
               href=""
-              className="ml-2 px-6 py-3 rounded-xl bg-gray-900 text-white text-base font-semibold hover:bg-gray-700 transition-colors shadow-sm"
+              className="ml-1 px-6 py-3 bg-gray-900 text-white text-sm font-bold uppercase tracking-widest hover:bg-black transition-colors"
             >
               Resume ↗
             </a>
           </motion.div>
         </div>
 
-        {/* Avatar */}
+        {/* Avatar — stacked offset frame */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="flex-shrink-0"
+          className="flex-shrink-0 relative"
         >
-          <img 
-            src="/Arthur_Profile.jpg" 
+          <div className="absolute inset-0 translate-x-4 translate-y-4 border-2 border-gray-300" />
+          <div className="absolute inset-0 translate-x-2 translate-y-2 bg-gray-100" />
+          <img
+            src="/Arthur_Profile.jpg"
             alt="Arthur Nelson"
-            className="w-64 h-64 sm:w-80 sm:h-80 rounded-2xl border border-gray-200 shadow-md object-cover"
+            className="relative w-64 h-64 sm:w-80 sm:h-80 object-cover border-2 border-gray-900"
           />
-
         </motion.div>
 
       </div>

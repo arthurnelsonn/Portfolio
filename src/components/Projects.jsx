@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ImageIcon, X, ChevronLeft, ChevronRight, GitFork, ExternalLink } from "lucide-react";
 import { PROJECTS } from "../data/projects";
 
-/* ── Outline/line logo variants where available, plain fallback ── */
 const TECH_LOGOS = {
   "React":        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
   "Node.js":      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg",
@@ -31,7 +30,6 @@ const cardVariants = {
   visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.1, duration: 0.45, ease: "easeOut" } }),
 };
 
-/* ── Image Carousel ── */
 function ImageCarousel({ images, title, height = "h-48", contain = false }) {
   const [idx, setIdx] = useState(0);
   const hasImages = images?.length > 0;
@@ -41,7 +39,7 @@ function ImageCarousel({ images, title, height = "h-48", contain = false }) {
   const next = (e) => { e.stopPropagation(); setIdx((i) => (i + 1) % images.length); };
 
   return (
-    <div className={`relative ${height} bg-black flex items-center justify-center overflow-hidden`}>
+    <div className={`relative ${height} bg-gray-900 flex items-center justify-center overflow-hidden`}>
       {hasImages ? (
         <AnimatePresence mode="wait">
           <motion.img
@@ -56,21 +54,21 @@ function ImageCarousel({ images, title, height = "h-48", contain = false }) {
           />
         </AnimatePresence>
       ) : (
-        <ImageIcon className="w-12 h-12 text-gray-300" strokeWidth={1.5} />
+        <ImageIcon className="w-12 h-12 text-gray-600" strokeWidth={1.5} />
       )}
 
       {multi && (
         <>
-          <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center transition-colors z-10">
-            <ChevronLeft className="w-4 h-4 text-gray-700" />
+          <button onClick={prev} className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/90 hover:bg-white flex items-center justify-center transition-colors z-10">
+            <ChevronLeft className="w-4 h-4 text-gray-900" />
           </button>
-          <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 hover:bg-white shadow flex items-center justify-center transition-colors z-10">
-            <ChevronRight className="w-4 h-4 text-gray-700" />
+          <button onClick={next} className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/90 hover:bg-white flex items-center justify-center transition-colors z-10">
+            <ChevronRight className="w-4 h-4 text-gray-900" />
           </button>
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
             {images.map((_, i) => (
               <button key={i} onClick={(e) => { e.stopPropagation(); setIdx(i); }}
-                className={`w-1.5 h-1.5 rounded-full transition-colors ${i === idx ? "bg-white" : "bg-white/40"}`}
+                className={`w-1.5 h-1.5 transition-colors ${i === idx ? "bg-white" : "bg-white/40"}`}
               />
             ))}
           </div>
@@ -84,16 +82,15 @@ export default function Projects() {
   const [selected, setSelected] = useState(null);
 
   return (
-    <section id="projects" className="bg-gray-50 border-y border-gray-100">
+    <section id="projects" className="bg-gray-950">
       <div className="max-w-7xl mx-auto px-8 py-20 sm:py-24">
 
-        <div className="mb-14">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400">Portfolio</span>
-          <h2 className="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
-            Projects
-            <span className="block w-12 h-1 bg-gray-900 rounded-full mt-3" />
-          </h2>
-          <p className="mt-3 text-lg text-gray-500">Here are the projects that I have built.</p>
+        <p className="text-[8rem] font-black text-gray-800 leading-none select-none -mb-10 -ml-2">02</p>
+
+        <div className="mb-14 border-l-4 border-white pl-8">
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-500">Portfolio</span>
+          <h2 className="mt-2 text-4xl sm:text-5xl font-black text-white tracking-tight">Projects</h2>
+          <p className="mt-3 text-lg text-gray-400">Here are the projects that I have built.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -123,34 +120,31 @@ function ProjectCard({ project, onClick }) {
   return (
     <div
       onClick={onClick}
-      className="group h-full flex flex-col rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden cursor-pointer"
+      className="group h-full flex flex-col bg-gray-900 border border-gray-800 hover:border-white transition-all duration-300 overflow-hidden cursor-pointer"
     >
-      {/* Thumbnail with carousel */}
       <div className="relative">
         <ImageCarousel images={project.thumbnail ? [project.thumbnail] : project.images} title={project.title} height="h-48" />
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-300 flex items-center justify-center pointer-events-none">
-          <span className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 text-white text-sm font-semibold border border-white/50 rounded-full px-5 py-2">
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-colors duration-300 flex items-center justify-center pointer-events-none">
+          <span className="opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 text-white text-sm font-bold uppercase tracking-widest border border-white px-5 py-2">
             View Details
           </span>
         </div>
       </div>
 
-      {/* Body */}
-      <div className="flex flex-col flex-1 p-6">
-        <h3 className="font-extrabold text-gray-900 text-xl leading-snug tracking-tight">{project.title}</h3>
-        <p className="mt-2 text-sm text-gray-500 leading-relaxed flex-1">{project.description}</p>
+      <div className="flex flex-col flex-1 p-6 border-l-4 border-transparent group-hover:border-white transition-all duration-300">
+        <h3 className="font-black text-white text-xl leading-snug tracking-tight">{project.title}</h3>
+        <p className="mt-2 text-sm text-gray-400 leading-relaxed flex-1">{project.description}</p>
 
-        {/* Outline tech logos only on card */}
         <div className="mt-4 flex flex-wrap gap-3">
           {project.tech.map((t) =>
             TECH_LOGOS[t] ? (
               <img
                 key={t} src={TECH_LOGOS[t]} alt={t} title={t}
-                className="w-6 h-6 object-contain opacity-60 hover:opacity-100 transition-opacity"
-                style={{ filter: "grayscale(100%) contrast(0.8)" }}
+                className="w-6 h-6 object-contain opacity-40 hover:opacity-80 transition-opacity"
+                style={{ filter: "grayscale(100%) invert(1)" }}
               />
             ) : (
-              <span key={t} className="text-xs font-medium text-gray-400 border border-gray-200 rounded-full px-2.5 py-1">{t}</span>
+              <span key={t} className="text-xs font-medium text-gray-500 border border-gray-700 px-2.5 py-1">{t}</span>
             )
           )}
         </div>
@@ -165,7 +159,7 @@ function ProjectModal({ project, onClose }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm"
       onClick={onClose}
     >
       <motion.div
@@ -174,49 +168,41 @@ function ProjectModal({ project, onClose }) {
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
         transition={{ duration: 0.25, ease: "easeOut" }}
         onClick={(e) => e.stopPropagation()}
-        className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto"
+        className="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto"
       >
-        {/* Image carousel — taller in modal */}
         <div className="relative">
           <ImageCarousel images={project.images} title={project.title} height="h-[500px]" contain />
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-9 h-9 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm z-20"
+            className="absolute top-4 right-4 w-9 h-9 bg-gray-900 flex items-center justify-center hover:bg-black transition-colors z-20"
           >
-            <X className="w-4 h-4 text-gray-600" />
+            <X className="w-4 h-4 text-white" />
           </button>
         </div>
 
-        {/* Content */}
-        <div className="p-10">
-          <h2 className="text-3xl font-bold text-gray-900 tracking-tight">{project.title}</h2>
+        <div className="p-10 border-l-4 border-gray-900">
+          <h2 className="text-3xl font-black text-gray-900 tracking-tight">{project.title}</h2>
           <p className="mt-4 text-gray-500 text-base leading-relaxed">{project.fullDescription}</p>
 
-          {/* Tech stack — outline logos + names */}
           <div className="mt-8">
-            <h4 className="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-4">Tech Stack</h4>
+            <h4 className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-4">Tech Stack</h4>
             <div className="flex flex-wrap gap-3">
               {project.tech.map((t) => (
-                <div key={t} className="flex items-center gap-2.5 bg-gray-50 border border-gray-200 rounded-xl px-4 py-2.5">
+                <div key={t} className="flex items-center gap-2.5 border-2 border-gray-200 px-4 py-2.5 hover:border-gray-900 transition-colors">
                   {TECH_LOGOS[t] && (
-                    <img
-                      src={TECH_LOGOS[t]} alt={t}
-                      className="w-5 h-5 object-contain"
-                      style={{ filter: "grayscale(100%) contrast(0.8)" }}
-                    />
+                    <img src={TECH_LOGOS[t]} alt={t} className="w-5 h-5 object-contain" style={{ filter: "grayscale(100%) contrast(0.8)" }} />
                   )}
-                  <span className="text-sm font-medium text-gray-700">{t}</span>
+                  <span className="text-sm font-semibold text-gray-700">{t}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Links */}
           <div className="mt-10 flex items-center gap-3">
             {project.repo && (
               <a
                 href={project.repo} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 rounded-xl border border-gray-200 text-gray-700 text-sm font-semibold hover:bg-gray-50 transition-colors"
+                className="flex items-center gap-2 px-6 py-3 border-2 border-gray-900 text-gray-900 text-sm font-bold uppercase tracking-widest hover:bg-gray-900 hover:text-white transition-colors"
               >
                 <GitFork className="w-4 h-4" /> GitHub Repo
               </a>
@@ -224,7 +210,7 @@ function ProjectModal({ project, onClose }) {
             {project.link && project.link !== "#" && (
               <a
                 href={project.link} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-gray-900 text-white text-sm font-semibold hover:bg-gray-700 transition-colors"
+                className="flex items-center gap-2 px-6 py-3 bg-gray-900 text-white text-sm font-bold uppercase tracking-widest hover:bg-black transition-colors"
               >
                 <ExternalLink className="w-4 h-4" /> Live Demo
               </a>

@@ -8,16 +8,15 @@ const cardVariants = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="bg-gray-50 border-t border-gray-100">
+    <section id="skills" className="bg-gray-950">
       <div className="max-w-7xl mx-auto px-8 py-20 sm:py-24">
 
-        <div className="mb-14">
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400">Expertise</span>
-          <h2 className="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
-            Skills
-            <span className="block w-12 h-1 bg-gray-900 rounded-full mt-3" />
-          </h2>
-          <p className="mt-3 text-lg text-gray-500">What I bring to a team.</p>
+        <p className="text-[8rem] font-black text-gray-800 leading-none select-none -mb-10 -ml-2">04</p>
+
+        <div className="mb-14 border-l-4 border-white pl-8">
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-500">Expertise</span>
+          <h2 className="mt-2 text-4xl sm:text-5xl font-black text-white tracking-tight">Skills</h2>
+          <p className="mt-3 text-lg text-gray-400">What I bring to a team.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -29,19 +28,19 @@ export default function Skills() {
               whileInView="visible"
               viewport={{ once: true, margin: "-60px" }}
               variants={cardVariants}
-              className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8"
+              className="group bg-gray-900 border border-gray-800 hover:border-white transition-all duration-300 p-8"
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center">
-                  <Icon className="w-6 h-6 text-gray-700" strokeWidth={1.75} />
+                <div className="w-12 h-12 bg-white flex items-center justify-center flex-shrink-0">
+                  <Icon className="w-6 h-6 text-gray-900" strokeWidth={1.75} />
                 </div>
-                <h3 className="font-semibold text-gray-900 text-base">{category}</h3>
+                <h3 className="font-bold text-white text-base uppercase tracking-wide">{category}</h3>
               </div>
 
               <ul className="space-y-3">
                 {items.map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-base text-gray-500">
-                    <span className="w-2 h-2 rounded-full bg-gray-400 flex-shrink-0" />
+                  <li key={item} className="flex items-center gap-3 text-base text-gray-400">
+                    <span className="w-1.5 h-1.5 bg-white flex-shrink-0" />
                     {item}
                   </li>
                 ))}
