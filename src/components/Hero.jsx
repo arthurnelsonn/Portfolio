@@ -82,7 +82,7 @@ export default function Hero() {
         {/* Text */}
         <div className="flex-1 text-center md:text-left border-l-4 border-gray-900 pl-8">
           <motion.p {...fadeUp(0)} className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">
-            Hello, I'm Arthur Nelson
+            Hello, I'm Arthur
           </motion.p>
 
           <motion.h1 {...fadeUp(0.1)} className="text-5xl sm:text-6xl font-black text-gray-900 leading-tight tracking-tight">
@@ -95,7 +95,7 @@ export default function Hero() {
               Computer Science undergraduate at BINUS University, focused on system analysis.
             </p>
             <p className="text-gray-500 text-lg leading-relaxed">
-              I build dynamic websites as a hobby and thrive in collaborative environments — driven to architect efficient systems and bring creative web projects to life.
+              I build dynamic websites as a hobby and thrive in collaborative environments, driven to architect efficient systems and bring creative web projects to life.
             </p>
           </motion.div>
 

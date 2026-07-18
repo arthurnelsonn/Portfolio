@@ -19,7 +19,7 @@ export default function Nav({ activeSection, onNavigate }) {
 
         <button onClick={() => handleNav("hero")} className="group flex items-center gap-2">
           <span className="text-lg font-black tracking-tight text-gray-900 uppercase">
-            Arthur Nelson
+            Arthur Nelson Kings Pranoto
           </span>
           <span className="w-2 h-2 rounded-full bg-gray-900 group-hover:scale-150 transition-transform" />
         </button>
