@@ -131,7 +131,7 @@ export default function Hero() {
           className="flex-shrink-0"
         >
           <img 
-            src="/profile.jpeg" 
+            src="/Arthur_Profile.jpg" 
             alt="Arthur Nelson"
             className="w-64 h-64 sm:w-80 sm:h-80 rounded-2xl border border-gray-200 shadow-md object-cover"
           />
