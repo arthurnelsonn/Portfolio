@@ -138,8 +138,8 @@ function ProjectCard({ project, onClick }) {
             TECH_LOGOS[t] ? (
               <img
                 key={t} src={TECH_LOGOS[t]} alt={t} title={t}
-                className="w-6 h-6 object-contain opacity-40 hover:opacity-80 transition-opacity"
-                style={{ filter: "grayscale(100%) invert(1) opacity(0.6)" }}
+                className="w-6 h-6 object-contain hover:opacity-70 transition-opacity"
+                style={{ filter: "brightness(0) invert(1)" }}
               />
             ) : (
               <span key={t} className="text-xs font-medium text-gray-500 border border-gray-700 px-2.5 py-1">{t}</span>
