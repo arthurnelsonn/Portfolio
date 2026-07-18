@@ -82,13 +82,13 @@ export default function Projects() {
   const [selected, setSelected] = useState(null);
 
   return (
-    <section id="projects" className="bg-gray-100 border-y border-gray-200">
+    <section id="projects" className="bg-gray-950">
       <div className="max-w-7xl mx-auto px-8 py-20 sm:py-24">
 
-<div className="mb-14 border-l-4 border-gray-900 pl-8">
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-400">Portfolio</span>
-          <h2 className="mt-2 text-4xl sm:text-5xl font-black text-gray-900 tracking-tight">Projects</h2>
-          <p className="mt-3 text-lg text-gray-500">Here are the projects that I have built.</p>
+<div className="mb-14 border-l-4 border-white pl-8">
+          <span className="text-xs font-bold uppercase tracking-[0.3em] text-gray-500">Portfolio</span>
+          <h2 className="mt-2 text-4xl sm:text-5xl font-black text-white tracking-tight">Projects</h2>
+          <p className="mt-3 text-lg text-gray-400">Here are the projects that I have built.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -118,7 +118,7 @@ function ProjectCard({ project, onClick }) {
   return (
     <div
       onClick={onClick}
-      className="group h-full flex flex-col bg-white border-2 border-gray-200 hover:border-gray-900 transition-all duration-300 overflow-hidden cursor-pointer"
+      className="group h-full flex flex-col bg-gray-800 border border-gray-700 hover:border-gray-400 transition-all duration-300 overflow-hidden cursor-pointer"
     >
       <div className="relative">
         <ImageCarousel images={project.thumbnail ? [project.thumbnail] : project.images} title={project.title} height="h-48" />
@@ -129,9 +129,9 @@ function ProjectCard({ project, onClick }) {
         </div>
       </div>
 
-      <div className="flex flex-col flex-1 p-6 border-l-4 border-transparent group-hover:border-gray-900 transition-all duration-300">
-        <h3 className="font-black text-gray-900 text-xl leading-snug tracking-tight">{project.title}</h3>
-        <p className="mt-2 text-sm text-gray-500 leading-relaxed flex-1">{project.description}</p>
+      <div className="flex flex-col flex-1 p-6 border-l-4 border-transparent group-hover:border-gray-400 transition-all duration-300">
+        <h3 className="font-black text-white text-xl leading-snug tracking-tight">{project.title}</h3>
+        <p className="mt-2 text-sm text-gray-400 leading-relaxed flex-1">{project.description}</p>
 
         <div className="mt-4 flex flex-wrap gap-3">
           {project.tech.map((t) =>
@@ -139,10 +139,10 @@ function ProjectCard({ project, onClick }) {
               <img
                 key={t} src={TECH_LOGOS[t]} alt={t} title={t}
                 className="w-6 h-6 object-contain opacity-40 hover:opacity-80 transition-opacity"
-                style={{ filter: "grayscale(100%) contrast(0.8)" }}
+                style={{ filter: "grayscale(100%) invert(1) opacity(0.6)" }}
               />
             ) : (
-              <span key={t} className="text-xs font-medium text-gray-400 border border-gray-300 px-2.5 py-1">{t}</span>
+              <span key={t} className="text-xs font-medium text-gray-500 border border-gray-700 px-2.5 py-1">{t}</span>
             )
           )}
         </div>
